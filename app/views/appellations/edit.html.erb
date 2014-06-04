@@ -1,0 +1,23 @@
+<div>
+  <h3>Edit Appellation: <%= @appellation.name %></h3>
+</div>
+</br>
+<div>
+  <div class="form-group">
+    <%= form_for(@appellation) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label :country_id %>
+      <%= f.select(:country_id,options_from_collection_for_select(Country.all, :id, :name, @appellation.country_id), class: "form-control") %>
+      </br>
+      <%= f.label :abbreviation %>
+      <%= f.text_field :abbreviation, class: "form-control" %>
+      </br>
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control" %>
+      </br>
+      <%= f.submit "Update appellation", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

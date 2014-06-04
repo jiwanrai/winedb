@@ -1,0 +1,104 @@
+<% provide(:title, @wine.name) %>
+<p id="notice"><%= notice %></p>
+<div>
+  <aside class="span4">
+    <section>
+      <h1><%= @wine.name %></h1>
+    </section>
+  </aside>
+</div>
+
+<div class="col-md-6">
+  <% if @wine.picture_file_name %>
+      <%= image_tag @wine.picture.url(:medium) %>
+  <% end %>
+</div>
+
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Wine Details</h3>
+    </div>
+    <div class="panel-body">
+      <p>
+        <strong>Description:</strong>
+        <% if @wine.description %>
+          <%= @wine.description %>
+        <% else %>
+          Unspecified
+        <% end %>
+      </p>
+      <p>
+        <strong>Link:</strong>
+        <%= link_to @wine.link, "#{@wine.link}" %>
+      </p>
+      <% if @wine.country %>
+        <p>
+          <strong>Country:</strong>
+          <%= @wine.country.name %>
+        </p>
+      <% end %>
+      <% if @wine.region %>
+        <p>
+          <strong>Region:</strong>
+          <%= @wine.region.name %>
+        </p>
+      <% end %>
+      <% if @wine.appellation %>
+        <p>
+          <strong>Appellation:</strong>
+          <%= @wine.appellation.name %>
+        </p>
+      <% end %>
+      <% if @wine.vintage %>
+        <p>
+          <strong>Vintage:</strong>
+          <%= @wine.vintage %>
+        </p>
+      <% end %>
+      <p>
+        <strong>Price:</strong>
+        <%= get_wine_price(@wine) %>
+      </p>
+      <p>
+        <strong>Grapes:</strong>
+          <% @wine.grapes.each do |grape| %>
+            <%= grape.name %>,
+          <% end %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<% if signed_in? %>
+<div class="controls text-right">
+  <%= link_to "Add to Wine Journal", {:controller => "consumed_wines", :action => "new", :wine_id => @wine.id }, class: "btn btn-default" %>
+  <%= link_to "Edit", edit_wine_path(@wine), method: :get, class: "btn btn-default" %>
+  <%= link_to "Delete Wine", @wine , method: :delete, data: { confirm: "You sure?" }, class: "btn btn-default " %>
+
+</div>
+<% end %>
+
+<div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Wine Reviews</h3>
+    </div>
+
+    <div class="panel-body">
+      <table class="table table-condensed">
+        <% @wine.reviews.each do |review| %>
+          <% if review.id %>
+            <tr><td>"<%= review.review %>"
+              <% if review.user_id %>
+                - <%= User.find(review.user_id).name %>
+              <% else %>
+                - Annon
+              <% end %>
+           </td></tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

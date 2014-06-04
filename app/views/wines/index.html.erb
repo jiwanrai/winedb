@@ -1,0 +1,33 @@
+<!-- When submit the form, the view rendered will be the index view of our articles resource -->
+<%= form_tag(wines_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+  <div class="input-append">
+    <%= text_field_tag :search, params[:search], class: "span2", placeholder: "Search Wines" %>
+    <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
+         of using a Rails form helper -->
+    <button class="btn" type="submit">Search Wines</button>
+  </div>
+<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Wine Database</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table table-condensed">
+      <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    <% @wines.each do |wine| %>
+      <tr>
+        <td><%= link_to wine.name, wine_path(wine.id) %></td>
+        <td><%= wine.country.name %></td>
+        <td><%= get_wine_price(wine) %></td>
+        <td><%= link_to "Add to Wine Journal", {:controller => "consumed_wines", :action => "new", :wine_id => wine.id }, class: "btn btn-success btn-xs" %></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>
+<%= button_to 'Add A Wine', new_wine_path, :method => "get", class: "btn btn-success" %>

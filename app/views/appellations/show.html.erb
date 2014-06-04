@@ -1,0 +1,23 @@
+<div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Appellation Details</h3>
+    </div>
+
+    <div class="panel-body">
+      <table class="table table-condensed">
+        <tr>
+          <th>Appellation Name</th>
+          <th>Country</th>
+          <th>Abbreviation</th>
+        </tr>
+        <tr>
+          <td><%= @appellation.name %></td>
+          <td><%= @appellation.country.name %></td>
+          <td><%= @appellation.abbreviation %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <%= link_to "Edit", edit_appellation_path(@appellation) %>
+</div>

@@ -1,0 +1,27 @@
+<% provide(:title, @region.name) %>
+
+<div class="container">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @region.name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <p>
+    <strong>Description:</strong>
+    <%= @region.description %>
+  </p>
+
+  <p>
+    <strong>Country</strong>
+    <%= @region.country.name %>
+  </p>
+
+  <%= link_to 'Edit', edit_region_path(@region) %> |
+  <%= link_to 'Back', regions_path %>
+</div>

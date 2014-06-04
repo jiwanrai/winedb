@@ -1,0 +1,2 @@
+module ConsumedWinesHelper
+end

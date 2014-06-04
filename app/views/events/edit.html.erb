@@ -1,0 +1,23 @@
+<h1>Update Wine Event</h1>
+
+<div class="container">
+  <div class="form-group">
+    <%= form_for(@event) do |f| %>
+      <%= f.label "Event Name" %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label "Event Description" %>
+      <%= f.text_area :description, class: "form-control" %>
+
+      <%= f.label :date %>
+      <%= f.date_field :date, class: "form-control" %>
+
+      <%= f.label "Wines" %>
+      <%= f.collection_select :wine_ids , Wine.all, :id, :name, {}, :multiple => true, class: "form-control"  %>
+
+      <%= f.submit "Update Event", class: "btn btn-large btn-primary form-control" %>
+    <% end %>
+  </div>
+<%= button_to "Delete Event", @event, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger"  %>
+</div>
+

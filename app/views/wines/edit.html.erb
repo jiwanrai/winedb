@@ -1,0 +1,51 @@
+
+<HR>
+<h1>Edit Wine</h1>
+
+<div class="container">
+  <div class="form group">
+    <%= form_for(@wine) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label :vintage %>
+      <%= f.text_field :vintage, class: "form-control" %>
+
+      <%= f.label :country_id %>
+      <%= f.select(:country_id,options_from_collection_for_select(Country.all, :id, :name, @wine.country_id)) %>
+
+      <%= f.label :region_id %>
+      <%= f.select(:region_id,options_from_collection_for_select(Region.all, :id, :name)) %>
+
+      <%= f.label :appellation_id %>
+      <%= f.select(:appellation_id,options_from_collection_for_select(Appellation.all, :id, :abbreviation)) %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control" %>
+
+      <%= f.label :link %>
+      <%= f.text_field :link, class: "form-control" %>
+
+      <%= f.label "Grapes" %>
+      <%= f.collection_select :grape_ids , Grape.all, :id, :name, {}, :multiple => true, class: "form-control"  %>
+
+      <%= form_for(@price) do |p| %>
+        <%= p.label :amount %>
+        <%= p.text_area :amount, class: "form-control" %>
+
+        <%= p.label :currency_id %>
+        <%= p.select(:currency_id,options_from_collection_for_select(Currency.all, :id, :name), class: "form-control" ) %>
+
+
+      <h2> Update Picture </h2>
+      <HR>
+      <%= f.label :picture %>
+      <%= f.file_field :picture %>
+      <HR>
+      <%= f.submit "Update Wine", class: "btn btn-large btn-primary" %>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+
+<HR>

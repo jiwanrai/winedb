@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Wine Regions</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table table-condensed ">
+    <tr>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Description</th>
+    </tr>
+  <% @regions.each do |region| %>
+    <tr>
+      <td><%= link_to region.name, region_path(region.id) %></td>
+      <td><%= region.country.name %></td>
+      <td><%= region.description %></td>
+    </tr>
+  <% end %>
+  </table>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+  <h1>Why Hello</h1>
+    <%= form_for(@review) do |f| %>
+      <%= f.label :review %>
+      <%= f.text_area :review %>
+      <%= f.submit "Update Review", class: "btn btn-large btn-primary" %>
+    <% end %>

@@ -1,0 +1,22 @@
+
+<div class="container">
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Price</th>
+    </tr>
+  <% @wines.each do |wine| %>
+    <tr>
+      <td><%= link_to wine.name, wine_path(wine.id) %></td>
+      <td><%= wine.country.name %></td>
+      <% if wine.price %>
+        <td><%= wine.price.currency.symbol %><%= wine.price.amount %></td>
+      <% else %>
+        <td>Unspecified</td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
+  <%= button_to 'Add A Wine', new_wine_path, :method => "get", class: "btn btn-success" %>
+</div>

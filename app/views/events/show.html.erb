@@ -1,0 +1,66 @@
+<% provide(:title, @event.name) %>
+
+<div class="container">
+  <aside class="span4">
+    <section>
+      <h1><%= @event.name %></h1>
+    </section>
+  </aside>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+<h3> Event Description </h3>
+<p><% if @event.description %>
+  <%= @event.description %>
+<% end %>
+</p>
+
+<h3>Date </h3>
+<% if @event.date %>
+<p><%= @event.date.strftime("%d %B %Y") %></p>
+<% else %>
+<p>Not specified</p>
+<% end %>
+
+<h3> Wines </h3>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Country</th>
+    <th>Region</th>
+    <th>Price</th>
+  </tr>
+<% @event.wines.each do |wine| %>
+  <tr>
+    <td><%= link_to wine.name,  wine_path(wine.id) %></td>
+    <td><%= wine.country.name %></td>
+    <td><%= wine.region.name %></td>
+    <td><%= get_wine_price(wine) %></tr>
+<% end %>
+</table>
+
+<h3> Reviews and Reflections </h3>
+<% @event.wines.each do |wine| %>
+  <h4><%= link_to wine.name,  wine_path(wine.id) %></h4>
+  <table class="table table-striped">
+    <% if ! wine.reviews.empty? %>
+      <tr>
+        <th>Review</th>
+      </tr>
+      <% wine.reviews.each do |review| %>
+        <tr>
+          <td><%= review.review %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td>No Reviews</td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<%= button_to 'Edit Event', edit_event_path(@event), method: :get, class: "btn btn-large btn-primary" %>
+</div>

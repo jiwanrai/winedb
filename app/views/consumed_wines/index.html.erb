@@ -1,0 +1,15 @@
+<h1>Wine Journal</h1>
+</br>
+</br>
+<% @consumed_wines.each do |consumed_wine| %>
+<div class="panel panel-defualt">
+  <div class="panel-heading">
+    <strong>Date:</strong> <%= consumed_wine.date_consumed.strftime("%d.%m.%Y") if consumed_wine.date_consumed %><br>
+    <strong>Wine:</strong> <%= link_to consumed_wine.wine.name, wine_path(consumed_wine.wine) %><br>
+    <strong>Review:</strong> <%= consumed_wine.review %><br>
+    <strong>Rating:</strong> <%= consumed_wine.rating||"-" %>/5
+  </div>
+</div>
+<% end %>
+
+<%= button_to 'Add A Wine', new_wine_path, :method => "get", class: "btn btn-success" %>
