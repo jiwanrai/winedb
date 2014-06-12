@@ -1,13 +1,10 @@
 <h1>Welcome to the Wine Club</h1>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-body text-center">
-        <h2>Just drank a wine?</h2>
-        </br>
-        <%= link_to "Add it to your journal!", new_consumed_wine_path, class: "btn btn-primary" %>
-        </br>
+        <h1><%= link_to "JOURNAL", consumed_wines_path %></h1>
         </br>
         <h4>What is the Wine Journal?</h4>
         <p>Your Wine Journal is where you can record all the wine that you've tried, enjoyed
@@ -16,46 +13,10 @@
       </div>
     </div>
   </div>
-  <div class="col-md-4">
+    <div class="col-md-6">
     <div class="panel panel-default text-center">
       <div class="panel-body">
-        <h3>Wine Stream</h3>
-        <% if signed_in? %>
-          <% @consumed_wines.each do |consumed_wine| %>
-          <div class="panel panel-defualt">
-
-            <div class="panel-heading">
-              <%= consumed_wine.user.name %> drank <%= link_to consumed_wine.wine.name, wine_path(consumed_wine.wine) %>
-              on <%= consumed_wine.date_consumed.strftime("%d.%m.%Y") if consumed_wine.date_consumed %><br>
-              <strong>Review:</strong> "<%= consumed_wine.review %>"<br>
-              <strong>Rating:</strong>
-
-
-              <div class="col-md-6">
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<%= consumed_wine.rating||0 %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= ((consumed_wine.rating||0) / 5.to_f) * 100%>%;">
-                    <%= consumed_wine.rating||0 %>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-          <% end %>
-        <% else %>
-          Nothing yet
-        <% end %>
-      </div>
-    </div>
-  </div>
-    <div class="col-md-4">
-    <div class="panel panel-default text-center">
-      <div class="panel-body">
-        <h2>Upcoming Events</h2>
-        </br>
-        <%= link_to "My Events", events_path, class: "btn btn-primary" %>
-        </br>
+        <h1><%= link_to "EVENTS", events_path %></h1>
         </br>
         <h4>Events</h4>
         <p>Organise events, review old events.
