@@ -1,17 +1,10 @@
-<h1>Wine Journal</h1>
-</br>
+<h1>WINE JOURNAL</h1>
 </br>
 <% @consumed_wines.each do |consumed_wine| %>
-
-<div class="jiwan-panel">
-
-  You drank the <%= link_to consumed_wine.wine.name, wine_path(consumed_wine.wine) %> on
-  <%= "on " + consumed_wine.date_consumed.strftime("%d.%m.%Y") if consumed_wine.date_consumed %>.
-
-  You gave it a <%= consumed_wine.rating||"-" %>/5, and said "<%= consumed_wine.review %>"
-</div>
-<br />
-
+  <div>
+    <p>-> You drank the <%= link_to consumed_wine.wine.name, wine_path(consumed_wine.wine) %><%= " on " + consumed_wine.date_consumed.strftime("%d.%m.%Y") if consumed_wine.date_consumed %>.
+    You gave it a <%= consumed_wine.rating||"-" %>/5<%= ", and said \"" + consumed_wine.review + "\"" if !consumed_wine.review.empty? %>.</p>
+  </div>
 <% end %>
 
 <%= button_to 'Add A Wine', new_consumed_wine_path, :method => "get", class: "btn btn-success" %>

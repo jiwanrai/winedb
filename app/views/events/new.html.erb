@@ -1,23 +1,29 @@
-<h1>Create New Event</h1>
+<h1>CREATE | EVENT</h1>
+<p class="listy">Not all events are created equal</p>
 
-<div class="container">
-  <div class="form-group">
-    <%= form_for(@event) do |f| %>
-      <%= f.label "Event Name" %>
-      <%= f.text_field :name, class: "form-control" %>
+<div class="form-group">
+  <%= form_for(@event) do |f| %>
+    <%= f.label "Event Name" %>
+    <%= f.text_field :name, class: "form-control" %>
 
-      <%= f.label "Event Description" %>
-      <%= f.text_area :description, class: "form-control" %>
+    <%= f.label "Quick Synopsis" %>
+    <%= f.text_field :tag_line, class: "form-control" %>
 
-      <%= f.label :date %>
-      <%= f.date_field :date, class: "form-control" %>
+    <%= f.label "Description" %>
+    <%= f.text_area :description, class: "form-control" %>
 
-      <%= f.label "Wines" %>
-      <%= f.collection_select :wine_ids , Wine.all, :id, :name, {}, :multiple => true, class: "form-control"  %>
+    <%= f.label "Location" %>
+    <%= f.text_area :location, class: "form-control" %>
 
+    <%= f.label :date %>
+    <%= f.date_field :date, class: "form-control" %>
 
-      <%= f.submit "Add Event", class: "btn btn-large btn-primary form-control" %>
-    <% end %>
-  </div>
+    <%= f.label "Select Wines" %>
+    <%= f.collection_select :wine_ids , Wine.all, :id, :name, {}, :multiple => true, class: "form-control"  %>
 
+    <%= f.label "Invite Attendees" %>
+    <%= f.collection_select :user_ids , User.all, :id, :name, {}, :multiple => true, class: "form-control"  %>
+    <br>
+    <%= f.submit "Add Event", class: "btn form-control" %>
+  <% end %>
 </div>

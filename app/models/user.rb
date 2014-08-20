@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
   before_create :create_remember_token
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, :on => :create
   has_secure_password
 
   def User.new_remember_token

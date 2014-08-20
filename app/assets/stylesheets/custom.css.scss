@@ -32,12 +32,28 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
-h1 {
-  font-size: 3em;
+.headmeup {
+  font-size: 2.5em;
   font-weight: normal;
-  letter-spacing: -2px;
+  text-align: center;
+  font-family: 'Arapey', serif;
+}
+
+.boom {
+  font-size: 10em;
+  font-weight: normal;
+  letter-spacing: 7px;
   margin-bottom: 30px;
   text-align: center;
+  font-family: 'Arapey', serif;
+}
+
+h1 {
+  font-size: 4em;
+  font-weight: normal;
+  margin-bottom: 30px;
+  text-align: center;
+  font-family: 'Arapey', serif;
 }
 
 h2 {
@@ -56,6 +72,7 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
+  font-family: 'Raleway', sans-serif;
   border-top: 1px solid #eaeaea;
   color: #999;
 }
@@ -72,7 +89,7 @@ footer small {
   float: left;
 }
 
-footer ul {
+footer li {
   float: right;
   list-style: none;
 }
@@ -96,8 +113,17 @@ footer ul li {
   line-height: 1;
 }
 
+.navbar-nav {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1em;
+  color: #FFFFFF;
+}
 .navbar-inverse{
-  background-color: #552239;
+  background-color: #FFFFFF;
+}
+
+.navbar-default{
+  background-color: #FFFFFF;
 }
 
 #logo:hover {
@@ -117,14 +143,116 @@ header ul li a{
   font-size: 1.2em;
 }
 
+.fixed_size{
+  height:300px;
+  font-family: 'Arapey', serif;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+
+.navbar-default .navbar-brand {
+  color: #000000;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #000000;
+}
+
+hr.hr_short {
+  border: none;
+  border-top: 2px solid #000;
+  margin: 20px auto;
+  width: 320px;
+}
+
+.listy{
+  font-family: 'Arapey', serif;
+  text-align: center;
+  border-top: 0px;
+}
+
+.spanny{
+  font-family: 'Arapey', serif;
+  font-size: 1.5em;
+  margin-bottom: 0px;
+}
+
+table.stripeless tbody tr td {
+  border-top: 0px;
+}
+
+.stripeless{
+  border-top: 0px;
+}
+
+.review-header{
+  font-family: 'Arapey', serif;
+  font-size: 1.5em;
+  margin-bottom: 0px;
+  text-align: center;
+}
+.spiffy{
+  font-family: 'Arapey', serif;
+  font-size: 1em;
+}
+.nopad{
+  margin-bottom: 5px;
+}
+a:link {color: #000000; text-decoration: no-underline; }
+a:visited {color: #000000; text-decoration: no-underline; }
+a:hover {color: #555555; text-decoration: no-underline; }
+
 div.jiwan-panel{
   background-image: image-url("vegetables1.jpg");
   background-repeat: no-repeat;
-  margin: auto;
   background-size: 100%;
-  width: 100%;
+  margin: 15px;
   height: 200px;
   color: white;
   text-align: center;
   font-size: 90px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  display:block;
+  position:relative;
+  font-family: 'Arapey', serif;
+}
+
+div.interesting{
+  background-image: image-url("wine-background.gif");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  -moz-border-radius: 30px;
+  border-radius: 5px;
+  color: white;
+}
+
+.form-group {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.2em;
+}
+
+.event-list li{
+   list-style-type: none;
+   font-family: 'Arapey', serif;
+   font-size: 1.1em;
+   padding-left: 0px;
+
+}
+
+.event-list ul{
+   list-style-type: none;
+   font-family: 'Raleway', sans-serif;
+   padding-left: 0px;
+}
+.btn{
+  font-family: 'Raleway', sans-serif;
+  #background-color: #777777;
+  #color: #FFFFFF;
+  width: 200px;
+}
+.navbar-brand {
+  font-family: 'Arapey', serif;
+  font-size: 2em;
 }

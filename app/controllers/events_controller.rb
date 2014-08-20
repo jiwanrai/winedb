@@ -33,6 +33,8 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @past_events = Event.where("date < '#{Date.today.to_s}'")
+    @upcoming_events = Event.where("date > '#{Date.today.to_s}'")
   end
 
   def destroy
@@ -44,6 +46,6 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:name,:description,:date,:wine_ids => [])
+      params.require(:event).permit(:name,:description,:tag_line,:date,:wine_ids => [], :user_ids => [])
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529084954) do
+ActiveRecord::Schema.define(version: 20140809160435) do
 
   create_table "appellations", force: true do |t|
     t.string  "name",         limit: 100
@@ -47,9 +47,16 @@ ActiveRecord::Schema.define(version: 20140529084954) do
   create_table "events", force: true do |t|
     t.string   "name"
     t.date     "date"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tag_line"
+    t.string   "location"
+  end
+
+  create_table "events_users", id: false, force: true do |t|
+    t.integer "event_id", null: false
+    t.integer "user_id",  null: false
   end
 
   create_table "events_wines", force: true do |t|
@@ -95,6 +102,7 @@ ActiveRecord::Schema.define(version: 20140529084954) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
+    t.string   "nick_name"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree

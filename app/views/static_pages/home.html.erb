@@ -1,27 +1,43 @@
-<h1>Welcome to the Wine Club</h1>
+<h1 class="boom">WINE CLUB</h1>
 
-<div class="row">
-  <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-body text-center">
-        <h1><%= link_to "JOURNAL", consumed_wines_path %></h1>
-        </br>
-        <h4>What is the Wine Journal?</h4>
-        <p>Your Wine Journal is where you can record all the wine that you've tried, enjoyed
-        or that you'd never drink again!
-        </p>
-      </div>
-    </div>
-  </div>
+<% if signed_in? %>
+  <div class="row">
     <div class="col-md-6">
-    <div class="panel panel-default text-center">
-      <div class="panel-body">
-        <h1><%= link_to "EVENTS", events_path %></h1>
-        </br>
-        <h4>Events</h4>
-        <p>Organise events, review old events.
-        </p>
+      <div class="panel panel-default">
+        <div class="panel-body text-center fixed_size">
+          <h1><%= link_to "JOURNAL", consumed_wines_path %></h1>
+          </br>
+          <h4>What is the Wine Journal?</h4>
+          <p>Your Wine Journal is where you can record all the wine that you've tried, enjoyed
+          or that you'd never drink again!
+          </p>
+        </div>
+      </div>
+    </div>
+      <div class="col-md-6">
+      <div class="panel panel-default text-center">
+        <div class="panel-body fixed_size">
+          <h1><%= link_to "EVENTS", events_path %></h1>
+          </br>
+          <h4>Events</h4>
+          <p>Organise events, review old events.
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body text-center fixed_size">
+          <h1>WHAT?</h1>
+          </br>
+          <h4>What is the Wine Journal?</h4>
+          <p>Your Wine Journal is where you can record all the wine that you've tried, enjoyed
+          or that you'd never drink again!
+          </p>
+        </div>
+      </div>
+  </div>
+<% end %>

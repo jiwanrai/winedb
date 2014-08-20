@@ -1,18 +1,43 @@
-<div class="container">
-  <table class="table ">
-    <tr>
-      <th>Name</th>
-      <th>Date</th>
-      <th>Description</th>
-      <th>Delete</th>
-    </tr>
-  <% @events.each do |event| %>
-    <tr>
-      <td><%= link_to event.name, event_path(event.id) %></td>
-      <td><%= event.date %></td>
-      <td><%= event.description %></td>
-      <td><%= link_to "Delete", event, method: :delete, data: { confirm: "You sure?" } %> | <%= link_to 'Edit Event', edit_event_path(event), method: :get %></td>
-    </tr>
-  <% end %>
-  </table>
+
+<div class="row">
+
+  <div class="col-md-12 center">
+    <h1>EVENTS</h1>
+    <br>
+    <span class="spanny"><%= link_to "CREATE | EVENT", {:controller => "events", :action => "new"}, class: "btn btn-default btn-xs" %></span>
+    <p>Events are not born, they are created.</p>
+    <br>
+    <br>
+  </div>
+
+  <div class="col-md-12">
+
+    <h2 class="headmeup">UPCOMING</h2>
+    <HR class="hr_short">
+
+    <% if @upcoming_events.empty? %>
+      <h2 class="headmeup">NO UPCOMING EVENTS. Outlook: BLEAK</h2>
+    <% else %>
+    <table class="table table-striped">
+    <% @upcoming_events.each do |event| %>
+
+      <tr class="listy">
+        <td><span class="spanny"><%= link_to event.name.upcase, event_path(event.id) %> </span> <br> Date: <%= event.date.strftime("%d %B %Y") %> <br> Description: <%= event.tag_line || "No Description" %></td>
+      </tr>
+    <% end %>
+    </table>
+    <% end %>
+    <br>
+
+    <h2 class="headmeup">DAYS GONE BY</h2>
+    <HR class="hr_short">
+    <table class="table table-striped">
+
+    <% @past_events.each do |event| %>
+      <tr class="listy">
+        <td><span class="spanny"><%= link_to event.name.upcase, event_path(event.id) %> </span> <br> Date: <%= event.date.strftime("%d %B %Y") %> <br> Description: <%= event.tag_line || "No Description" %></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
 </div>
